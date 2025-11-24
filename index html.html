@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lions Heart</title>
+  <meta name="description" content="Lions Heart — Fuerza, disciplina y transformación real. Entrenamiento personalizado." />
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --muted:#e6e6e6;
+      --accent:#FF7A00; /* naranja */
+      --accent-2:#FFD166; /* amarillo cálido */
+      --white:#ffffff;
+      --glass: rgba(255,255,255,0.06);
+      --overlay: rgba(0,0,0,0.55);
+      --max-w:1100px;
+      --radius:12px;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a.secondary { color: var(--white); background: transparent; border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:8px; }
+
+    .container{ max-width: var(--max-w); margin:0 auto; padding:28px; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      height:78vh;
+      min-height:480px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      overflow:hidden;
+      border-radius:16px;
+    }
+    .hero video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      filter: brightness(0.6) contrast(1.05);
+    }
+    .hero .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 60%);
+      z-index:1;
+    }
+    .hero .content{
+      position:relative;
+      z-index:2;
+      color:var(--white);
+      max-width:58%;
+      padding:40px;
+      backdrop-filter: blur(4px);
+    }
+    .logo-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:16px;
+    }
+    .badge{
+      width:58px;height:58px;border-radius:10px;
+      display:inline-grid;place-items:center;
+      font-weight:700;color:var(--white);
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    h1{ margin:0; font-size:42px; line-height:1.02; letter-spacing:0.6px;}
+    p.lead{ margin-top:14px; font-size:18px; color:rgba(255,255,255,0.9); }
+
+    .cta-row{ margin-top:22px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .btn-primary{
+      display:inline-flex; gap:10px; align-items:center;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:var(--white); border:none; padding:12px 18px; border-radius:12px;
+      font-weight:600; cursor:pointer;
+      box-shadow: 0 10px 30px rgba(255,122,0,0.12);
+    }
+    .btn-ghost{
+      color:var(--white); border:1px solid rgba(255,255,255,0.12); padding:10px 16px;border-radius:10px; background:transparent;
+    }
+
+    /* MAIN */
+    main{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:28px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .grid-2{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+    .services-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+    .services-list li{ padding:10px; border-radius:8px; background: rgba(255,255,255,0.02); display:flex; gap:12px; align-items:flex-start; }
+    .price-tag{ font-weight:700; color:var(--accent); }
+
+    .plans{ display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+    .plan{ padding:14px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.03); }
+    .plan h4{ margin:0 0 8px 0; color:var(--white); }
+    .plan p{ margin:6px 0; color:var(--muted); font-size:14px; }
+
+    footer{ margin-top:28px; padding:20px 0; color:rgba(255,255,255,0.6); font-size:14px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero .content{ max-width:70%; padding:28px; }
+      .plans{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:720px){
+      .container{ padding:18px; }
+      .hero{ height:68vh; min-height:420px; }
+      h1{ font-size:30px; }
+      .hero .content{ max-width:100%; padding:20px; }
+      .grid-2{ grid-template-columns:1fr; }
+      .plans{ grid-template-columns:1fr; }
+    }
+
+    /* small helpers */
+    .muted{ color:rgba(255,255,255,0.65); font-size:14px; }
+    .accent-small{ color:var(--accent); font-weight:700; }
+    .sep{ height:1px; background:rgba(255,255,255,0.03); margin:12px 0 18px 0; border-radius:2px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <section class="hero card" aria-label="Hero - Lions Heart">
+      <!-- Replace the src below with your actual hero video file (assets/hero-video.mp4) or an external mp4 URL -->
+      <!-- If you don't yet have a video, upload an MP4 named 'hero-video.mp4' into the same folder and keep the src as 'assets/hero-video.mp4' -->
+      <video id="hero-video" autoplay muted loop playsinline>
+        <source src="assets/hero-video.mp4" type="video/mp4">
+        <!-- Fallback image if video not available -->
+      </video>
+
+      <!-- DARK overlay to make text legible -->
+      <div class="overlay" aria-hidden="true"></div>
+
+      <div class="content">
+        <div class="logo-badge">
+          <div class="badge">LH</div>
+          <div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.7)">Lions Heart</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45)">Entrenamiento personalizado</div>
+          </div>
+        </div>
+
+        <h1>Fuerza, disciplina y transformación real.</h1>
+        <p class="lead">Entrenamiento personalizado.</p>
+
+        <div class="cta-row">
+          <a class="btn-primary" href="#planes" onclick="scrollToSection('planes')">Contrata ahora</a>
+          <a class="btn-ghost" href="plan-lionsheart.pdf" download id="download-plan">Descargar plan de entrenamiento</a>
+          <a class="btn-ghost" href="mailto:lionspride860@gmail.com">Enviar email</a>
+        </div>
+
+        <div style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.75)">
+          Coach: <span class="accent-small">Alex Colin</span>
+          <span style="margin-left:12px">Contacto: <a href="https://wa.me/5217226927816" target="_blank" rel="noreferrer">WhatsApp</a></span>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <!-- INTRO / PRESENTACIÓN -->
+      <section class="card">
+        <h2 style="color:var(--white); margin:0 0 8px 0">Presentación</h2>
+        <p class="muted">
+          Lions Heart es más que un entrenamiento; es una filosofía. Creemos en la fuerza interior,
+          la disciplina constante y la transformación real. Cada programa está diseñado para ayudarte
+          a superar tus límites, construir tu mejor versión y mantener un equilibrio entre cuerpo, mente y rendimiento.
+        </p>
+      </section>
+
+      <!-- OBJETIVO -->
+      <section class="card grid-2" id="objetivo">
+        <div>
+          <h3 style="color:var(--white); margin-top:0">Objetivo del programa</h3>
+          <p class="muted">
+            Nuestro objetivo es guiarte hacia una transformación física y mental completa.
+            Buscamos mejorar tu fuerza, resistencia y bienestar general a través de rutinas personalizadas,
+            nutrición deportiva y un acompañamiento constante que te motive a mantenerte firme en tu proceso.
+          </p>
+        </div>
+        <div>
+          <h3 style="color:var(--white); margin-top:0">Qué medimos</h3>
+          <ul class="services-list" aria-hidden="false">
+            <li><strong>Mediciones antropométricas y plicométricas</strong><div style="flex:1"></div></li>
+            <li><strong>Revisión y supervisión constante</strong><div style="flex:1"></div></li>
+            <li><strong>Soporte 24/7 vía WhatsApp</strong><div style="flex:1"></div></li>
+            <li><strong>Entrenamiento funcional y prevención de lesiones</strong><div style="flex:1"></div></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section class="card" id="servicios">
+        <h3 style="color:var(--white); margin-top:0">Tipos de entrenamiento y servicios</h3>
+        <div class="sep"></div>
+        <ul class="services-list">
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Planes presenciales.</strong><div class="muted">Rutinas personalizadas uno a uno.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Rutinas tu a tu.</strong><div class="muted">Entrenamiento individual adaptado.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Revisión y supervisión constante.</strong><div class="muted">Seguimiento técnico profesional.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Soporte 24/7 vía WhatsApp.</strong><div class="muted">Asesoría y dudas en tiempo real.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Rutinas funcionales o adaptadas.</strong><div class="muted">Para cualquier disciplina o meta.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Prevención y habilitación de lesiones.</strong><div class="muted">Foco en movilidad y recuperación.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Mediciones antropométricas y plicimétricas.</strong><div class="muted">Evaluación objetiva de progreso.</div></div></li>
+          <li><div style="width:6px;height:6px;border-radius:100%;background:var(--accent);margin-top:8px"></div><div><strong>Servicio de nutrición deportiva.</strong><div class="muted">Planes alimenticios orientados al rendimiento.</div></div></li>
+        </ul>
+      </section>
+
+      <!-- PLANES / PRECIOS -->
+      <section class="card" id="planes">
+        <h3 style="color:var(--white); margin-top:0">Planes</h3>
+        <div class="sep"></div>
+        <div class="plans" aria-label="Planes y precios">
+          <div class="plan">
+            <h4>Plan Digital (Seguimiento en línea)</h4>
+            <p class="price-tag">$900 MXN / mes</p>
+            <p class="muted">Seguimiento remoto con rutinas y asesoría vía WhatsApp.</p>
+          </div>
+          <div class="plan">
+            <h4>Plan Presencial (Entrenamiento Individual)</h4>
+            <p class="price-tag">$350 MXN / sesión</p>
+            <p class="muted">Paquetes por sesiones:</p>
+            <p class="muted">8 sesiones → <strong>$2,800 MXN</strong></p>
+            <p class="muted">12 sesiones → <strong>$4,200 MXN</strong></p>
+            <p class="muted">24 sesiones → <strong>$8,400 MXN</strong></p>
+          </div>
+          <div class="plan">
+            <h4>Plan Premium (Funcional & Desempeño + Nutrición)</h4>
+            <p class="muted">Incluye plan nutricional y seguimiento avanzado.</p>
+            <p class="muted">8 sesiones → <strong>$3,700 MXN</strong></p>
+            <p class="muted">12 sesiones → <strong>$5,100 MXN</strong></p>
+            <p class="muted">24 sesiones → <strong>$9,300 MXN</strong></p>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;" class="muted">
+          <strong>Duración recomendada:</strong> 1 mes (el primer mes es la base para evaluación y ajustes).
+        </div>
+      </section>
+
+      <!-- CTA final / contacto -->
+      <section class="card" style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h3 style="color:var(--white); margin:0">Listo para empezar tu transformación?</h3>
+            <p class="muted" style="margin:6px 0 0 0">Contacta a Alex Colin y programa tu primera evaluación.</p>
+          </div>
+
+          <div style="display:flex; gap:10px; align-items:center">
+            <a class="btn-primary" href="https://wa.me/5217226927816" target="_blank" rel="noreferrer">Enviar WhatsApp</a>
+            <a class="btn-ghost" href="mailto:lionspride860@gmail.com">Enviar email</a>
+            <a class="btn-ghost" href="plan-lionsheart.pdf" download>Descargar plan (PDF)</a>
+          </div>
+        </div>
+
+        <div style="font-size:13px;" class="muted">
+          <strong>Contacto:</strong> lionspride860@gmail.com  ·  <strong>Tel/WhatsApp:</strong> +52 1 7226927816
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Lions Heart — Fuerza, disciplina y transformación real.</div>
+      <div style="opacity:0.9">Diseñado para presencia web y GitHub Pages / Wix</div>
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Accessibility: allow user to pause/play background video with Space when focused on page
+    (function(){
+      const vid = document.getElementById('hero-video');
+      // If video file is missing, hide video element to avoid broken icon
+      vid.addEventListener('error', function(){ vid.style.display='none'; });
+
+      // small control: click hero to pause/play
+      document.querySelector('.hero').addEventListener('click', function (e) {
+        // Avoid clicks when pressing links/buttons
+        if(e.target.tagName.toLowerCase() === 'a') return;
+        if(!vid) return;
+        if(vid.paused) vid.play(); else vid.pause();
+      });
+
+      // show note in console to remind where to replace files
+      console.info('Lions Heart — archivo listo. Reemplaza assets/hero-video.mp4 y plan-lionsheart.pdf en tu hosting para activar video y descarga.');
+    })();
+  </script>
+</body>
+</html>
